@@ -32,3 +32,11 @@ export function removeComment(postId, i) {
     i
   };
 }
+
+// photogrid visibility filter
+export function setVisibilityFilter(filter) {
+  return {
+    type: 'SET_VISIBILITY_FILTER',
+    filter
+  };
+}

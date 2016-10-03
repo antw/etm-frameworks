@@ -5,10 +5,21 @@ import { connect } from 'react-redux';
 
 import * as actionCreators from '../actions/actionCreators';
 
+function getVisiblePosts(posts, comments, filter) {
+  switch (filter) {
+    case 'LIKED':
+      return posts.filter(p => p.isLiked);
+    case 'ACTIVE':
+      return posts.filter(p => comments[p.code] && comments[p.code].length);
+    default:
+      return posts;
+  }
+}
+
 function mapStateToProps(state) {
   return {
     comments: state.comments,
-    posts: state.posts
+    posts: getVisiblePosts(state.posts, state.comments, state.visibility.filter)
   };
 }
 

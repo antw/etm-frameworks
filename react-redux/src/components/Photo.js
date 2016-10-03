@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import LazyLoad from 'react-lazyload';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 import classNames from 'classnames';
 
@@ -59,16 +58,14 @@ class Photo extends React.Component {
     return (
       <figure className="grid-figure">
         <div className={photoClasses}>
-          <LazyLoad height={300} once>
-            <Link to={`view/${post.code}`}>
-              <img
-                src={post.display_src}
-                alt={post.caption}
-                onLoad={() => this.imageDidLoad()}
-                className="grid-photo"
-              />
-            </Link>
-          </LazyLoad>
+          <Link to={`view/${post.code}`}>
+            <img
+              src={post.display_src}
+              alt={post.caption}
+              onLoad={() => this.imageDidLoad()}
+              className="grid-photo"
+            />
+          </Link>
 
           <CSSTransitionGroup
             transitionName="like"
