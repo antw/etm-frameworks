@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Photo from './photo';
-import Comments from './comments';
+import Photo from './Photo';
+import Comments from './Comments';
 
 export default {
   name: 'Single',

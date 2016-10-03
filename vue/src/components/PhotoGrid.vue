@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Photo from './photo';
+import Photo from './Photo';
 
 export default {
   name: 'PhotoGrid',
