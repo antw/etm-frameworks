@@ -14,6 +14,21 @@ function updatePost(posts, code, updater) {
 const posts = {
   state: initialPosts,
 
+  getters: {
+    visiblePosts(state, getters, rootState) {
+      switch (rootState.visibility.filter) {
+        case 'LIKED':
+          return state.filter(p => p.hasLiked);
+        case 'ACTIVE':
+          return state.filter(
+            p => rootState.comments[p.code] && rootState.comments[p.code].length
+          );
+        default:
+          return state;
+      }
+    },
+  },
+
   mutations: {
     LIKE_POST(state, postId) {
       updatePost(state, postId, post => {
